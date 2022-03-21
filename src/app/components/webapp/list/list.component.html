@@ -1,0 +1,28 @@
+<div class="container p-0 mt-4">
+    <div class="grid">
+        <button type="button" class="btn btn-primary bg-blue-500 mb-3 justify-self-end"
+            (click)="showNew = true">Nuevo</button>
+    </div>
+    <item *ngIf="showNew"
+        (newItem)="addItem($event)" (cancel)="cancel()" (editItem)="editItem($event)"
+        [itemToEdit]="itemToEdit"
+    ></item>
+    <ol class="list-group list-group-numbered">
+        <li class="list-group-item d-flex justify-content-between align-items-center"
+            *ngFor="let item of list">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">{{ item.name }}</div>
+                {{ item.type == 0 ? 'Gasto' : 'Ingreso' }}
+            </div>
+            <span class="text-xl"
+                [class.text-red-500]="item.type == 0"
+                [class.text-green-600]="item.type == 1"
+            >{{ item.amount | currency }}</span>
+            <button type="button" class="btn btn-outline-primary ml-3"
+                (click)="requestEditItem(item)">Editar</button>
+            <button type="button" class="btn btn-outline-danger ml-3"
+                (click)="deleteItem(item)">Borrar</button>
+        </li>
+    </ol>
+    <div class="m-3 text-right text-2xl font-semibold">{{ getTotal() | currency }}</div>
+</div>

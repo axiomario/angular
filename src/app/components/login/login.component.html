@@ -1,0 +1,22 @@
+<div class="w-screen h-screen flex justify-center items-center">
+    <div class="card shadow-md shadow-gray-500/50 w-96">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/ZDF_logo%21_Logo_2021.svg/1200px-ZDF_logo%21_Logo_2021.svg.png"
+            class="card-img-top p-4" alt="...">
+        <div class="card-body">
+            <div class="alert alert-danger" role="alert" *ngIf="showError">
+                Usuario o contraseña incorrectos
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text w-28" id="basic-addon1">Usuario</span>
+                <input type="text" class="form-control"
+                    [(ngModel)]="username" (ngModelChange)="showError = false">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text w-28" id="basic-addon1">Contraseña</span>
+                <input type="password" class="form-control"
+                    [(ngModel)]="password" (ngModelChange)="showError = false">
+            </div>
+            <button type="button" class="btn btn-primary bg-blue-500 w-full" (click)="login()">Entrar</button>
+        </div>
+    </div>
+</div>
