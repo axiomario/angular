@@ -1,8 +1,0 @@
-<div class="flex mb-3">
-    <input class="form-control" type="text" placeholder="Nombre" [(ngModel)]="name">
-    <input class="form-control" type="text" placeholder="Tipo" [(ngModel)]="type">
-    <input class="form-control" type="text" placeholder="Monto" [(ngModel)]="amount">
-    <button type="button" class="btn btn-danger bg-red-500" (click)="cancel.emit()">Cancelar</button>
-    <!-- <button type="button" class="btn btn-primary bg-blue-500" (click)="add()">Agregar</button> -->
-    <button type="button" class="btn btn-primary bg-blue-500" (click)="handleOk()">{{ itemToEdit ? 'Editar' : 'Agregar' }}</button>
-</div>

@@ -1,2 +1,28 @@
-<header></header>
-<list></list>
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand">Mi aplicación</a>
+        <button type="button" class="btn btn-danger bg-red-500 ml-5" (click)="closeSession()">Cerrar sesión</button>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <div class="flex mb-3 gap-5">
+        <input class="form-control" type="text" placeholder="Nombre" [(ngModel)]="name">
+        <input class="form-control" type="text" placeholder="Monto" [(ngModel)]="amount">
+        <button type="button" class="btn btn-primary bg-blue-500" (click)="add()">Agregar</button>
+    </div>
+
+    <ol class="list-group list-group-numbered">
+        <li class="list-group-item d-flex justify-content-between align-items-center"
+            *ngFor="let item of list">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">{{ item.name }}</div>
+            </div>
+            <span class="text-xl"
+                [class.text-red-500]="item.amount < 0"
+                [class.text-green-600]="item.amount > 0"
+            >{{ item.amount | currency }}</span>
+            <button type="button" class="btn btn-outline-danger ml-3" (click)="delete(item)">Borrar</button>
+        </li>
+    </ol>
+</div>
